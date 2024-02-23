@@ -24,6 +24,4 @@ public class CommonConfig {
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
-
-
 }

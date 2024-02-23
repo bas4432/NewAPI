@@ -27,7 +27,7 @@ public class UserCustomAuthenticationProvider implements AuthenticationProvider 
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String email = authentication.getName(); // 입력받은 email
+        String email = authentication.getPrincipal().toString(); // 입력받은 email
         String password = authentication.getCredentials().toString(); // 입력받은 pw
 
         String decryptPw = passwordEncoder.encode(password);

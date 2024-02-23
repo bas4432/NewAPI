@@ -37,15 +37,13 @@ public class SecurityConfig  {
                      .antMatchers("/user/login").permitAll()
                      .anyRequest().permitAll()
 //                     .antMatchers("/**").permitAll()
-                     .and()
-                     .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)//form Login 기능 해제
-//                        .loginPage("/user/login")
-//                        .loginProcessingUrl("/user/loginProc")
-//                        .defaultSuccessUrl("/")
-//                        .and()
-                     .authenticationProvider(userCustomAuthenticationProvider)
-                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //세션 제거
-       
+                      .and()
+                        .formLogin()
+                        .loginPage("/user/login")
+                        .loginProcessingUrl("/user/loginProc")
+                        .defaultSuccessUrl("/")
+                        .and()
+                     .authenticationProvider(userCustomAuthenticationProvider);
         return http.build();
 
     }

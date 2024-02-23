@@ -9,7 +9,6 @@ public class BoardController {
 
     @GetMapping("/")
     public String index(){
-
         return "index";
     }
 }

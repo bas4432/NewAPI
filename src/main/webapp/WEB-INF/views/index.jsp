@@ -10,8 +10,8 @@
 <div class="container">
     <p>회원 기능</p>
     <div>
-        <a href="/member/join">회원가입</a>
-        <a href="/members">회원 목록</a>
+        <a href="/user/join">회원가입</a>
+        <a href="/users">회원 목록</a>
     </div>
 </div>
 </body>
