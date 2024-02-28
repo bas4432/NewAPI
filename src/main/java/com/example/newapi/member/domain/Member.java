@@ -20,7 +20,7 @@ public class Member{
     private Long user_seq_no;
 
     @Column(name = "user_id")
-    private String user_id;
+    private String userId;
 
     @Column(name = "username")
     private String username;

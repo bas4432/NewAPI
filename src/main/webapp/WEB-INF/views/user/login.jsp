@@ -11,7 +11,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <input type="hidden" id="userType" name="userType" value="USER" />
 
-    <span>UserId :</span><input type="text" name="username" required/>
+    <span>UserId :</span><input type="text" name="userId" required/>
     <span>pw :</span><input type="password" name="password" required/>
 
     <input type="submit" value="로그인"/>

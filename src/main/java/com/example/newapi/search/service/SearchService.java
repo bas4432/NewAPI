@@ -21,14 +21,14 @@ public class SearchService {
 
     private final RestTemplate restTemplate;
 
-    public ResponseEntity<String> SearchApiCall(){
+    public ResponseEntity<String> SearchApiCall(String Keyword){
 
         String clientId = "l82FRkPW5mJ4LoSsaWG0"; //애플리케이션 클라이언트 아이디
         String clientSecret = "1y6aDrkNm3";
 
         String text = null;
         try {
-            text = URLEncoder.encode("선거", "UTF-8");
+            text = URLEncoder.encode(Keyword, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }

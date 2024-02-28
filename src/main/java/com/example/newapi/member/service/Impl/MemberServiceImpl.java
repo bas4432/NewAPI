@@ -20,7 +20,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Long join(MemberDto memberDto) {
         Member member = Member.builder()
-                .user_id(memberDto.getUserId())
+                .userId(memberDto.getUserId())
                 .email(memberDto.getEmail())
                 .username(memberDto.getUsername())
                 .password(memberDto.getPassword())

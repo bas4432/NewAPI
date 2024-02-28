@@ -25,17 +25,17 @@ public class UserCustomDetailService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 
-        Member member = memberRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("해당 정보를 찾을 수 없습니다. 이메일: " + username));
+        Member member = memberRepository.findByUserId(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("해당 정보를 찾을 수 없습니다. 아이디: " + userId));
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return User.builder()
-                .username(username)
+                .username(userId)
                 .password(member.getPassword())
                 .authorities(authorities)
                 .build();

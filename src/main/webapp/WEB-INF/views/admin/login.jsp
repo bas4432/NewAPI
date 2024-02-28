@@ -6,8 +6,6 @@
 <body>
 <form action="/admin/login" method="post">
 
-
-
     <span>id :</span><input type="text" name="username" required/>
     <span>id :</span><input type="password" name="password" required/>
 

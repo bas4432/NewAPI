@@ -27,7 +27,9 @@ public class NaverApiController {
     @RequestMapping(value = "naver/api")
     public String getNaverBlog(HttpServletRequest request, Model model) {
         try {
-            ResponseEntity<String> result = searchService.SearchApiCall();
+            String keyword = "선거";
+            
+            ResponseEntity<String> result = searchService.SearchApiCall(keyword);
             String jsonString = result.getBody();
 
             SearchResultDto searchResultsDTO = objectMapper.readValue(jsonString, SearchResultDto.class);
