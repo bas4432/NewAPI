@@ -11,7 +11,7 @@
     <p>회원 기능</p>
     <div>
         <a href="/user/join">회원가입</a>
-        <a href="/users">회원 목록</a>
+        <a href="/user/login">로그인</a>
     </div>
 </div>
 </body>

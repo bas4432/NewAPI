@@ -22,5 +22,7 @@
     </c:forEach>
 </ul>
 
+<button type="button" value="등록하기"><a href="/mypage/add">등록</a></button>
+
 </body>
 </html>

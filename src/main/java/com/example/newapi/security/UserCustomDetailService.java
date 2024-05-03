@@ -26,12 +26,16 @@ public class UserCustomDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        //즉 내가 만약 데이터베이스를 사용중이라면 이 UserDetailService클래스를 오버라이딩 해서
+        //데이터베이스에 있는 유저 아이디를 찾는 로직을 작성을 해서 자격증명을 입증하면된다.
 
         Member member = memberRepository.findByUserId(userId)
                 .orElseThrow(() -> new UsernameNotFoundException("해당 정보를 찾을 수 없습니다. 아이디: " + userId));
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        //Authentication토큰 생성
+        //SecurtiyContextHolder에 저장
 
+        List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return User.builder()

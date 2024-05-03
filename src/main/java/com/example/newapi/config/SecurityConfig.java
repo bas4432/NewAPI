@@ -4,19 +4,15 @@ import com.example.newapi.security.handler.UserLoginFailHandler;
 import com.example.newapi.security.handler.UserLoginSuccessHandler;
 import com.example.newapi.security.userCustomAuthenticationProvider.UserCustomAuthenticationProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity //기본 설정 개발자가 바꾸도록
 @RequiredArgsConstructor
 public class SecurityConfig  {
 
@@ -36,7 +32,7 @@ public class SecurityConfig  {
                 .headers()// 캐시 제어 헤더 비활성화
                 .cacheControl().disable()
                 .and()
-                .authorizeRequests() //페이지에 대한 권한부여 시작 -> antMatchers를 사용하기위한 메소드
+                .authorizeHttpRequests() //페이지에 대한 권한부여 시작 -> antMatchers를 사용하기위한 메소드
                      .antMatchers("/mypage/**").hasRole("USER") // "/mypage/**" 경로에 대한 접근 권한 설정: "USER" 역할을 가진 사용자만 접근 허용
                      .antMatchers("/user/login").permitAll()    // "/user/login" 경로에 대한 접근 권한 설정: 모든 사용자에게 접근 허용
                      .anyRequest().permitAll() // 나머지 모든 요청에 대한 접근 권한 설정: 모든 사용자에게 접근 허용
@@ -53,5 +49,8 @@ public class SecurityConfig  {
         return http.build(); // SecurityFilterChain 반환
 
     }
+
+    // SecurityContextHolder
+    // -
 
 }

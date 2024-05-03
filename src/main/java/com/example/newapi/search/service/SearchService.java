@@ -13,8 +13,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javax.management.remote.JMXConnectorFactory.connect;
-
 @Service
 @RequiredArgsConstructor
 public class SearchService {

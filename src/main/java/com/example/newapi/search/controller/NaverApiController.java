@@ -1,19 +1,19 @@
 package com.example.newapi.search.controller;
 
+import com.example.newapi.search.domain.NewsArticle;
 import com.example.newapi.search.domain.SearchResultDto;
 import com.example.newapi.search.service.SearchService;
+import com.example.newapi.search.service.newsCrawlerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class NaverApiController {
 
     private final SearchService searchService;
+    private final newsCrawlerService newsCrawlerService;
 
     private final ObjectMapper objectMapper;
 
@@ -39,5 +40,13 @@ public class NaverApiController {
 
         }
         return "user/mypage/mypage";
+    }
+
+    @GetMapping("/crawl-news")
+    public String crawlNews(HttpServletRequest request , Model model) {
+        List<NewsArticle> newsArticles = newsCrawlerService.crawlGoogleNews("선거");
+        model.addAttribute("newsArticles", newsArticles);
+
+        return "news";
     }
 }
