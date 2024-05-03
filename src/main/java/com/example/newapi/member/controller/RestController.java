@@ -15,6 +15,7 @@ public class RestController {
     public HashMap<String, Object> test(){
         HashMap<String, Object> paramap = new HashMap<>();
         paramap.put("1", "박진우");
+        paramap.put("2", "나다");
         return paramap;
     }
 
