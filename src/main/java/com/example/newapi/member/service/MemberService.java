@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MemberService {
 
-    Long join(MemberDto memberDto);
+    Long join(MemberDto memberDto) throws Exception;
 
     List<MemberDto> findMembers();
 }

@@ -21,7 +21,6 @@ repositories {
 }
 
 dependencies {
-    //implementation 'com.auth0:java-jwt:4.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
    // implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -36,13 +35,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'com.auth0:java-jwt:4.2.1'
 ////    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 //    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     compileOnly("org.springframework.boot:spring-boot-devtools")
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.jsoup:jsoup:1.15.3'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
 }
 

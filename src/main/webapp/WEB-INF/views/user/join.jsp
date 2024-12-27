@@ -20,7 +20,6 @@
     <label for="email">이메일: </label>
     <input type="text" id="email" name="email"><br>
     <!-- 기타 필요한 필드들 추가 -->
-
     <input type="submit" value="가입">
 </form>
 

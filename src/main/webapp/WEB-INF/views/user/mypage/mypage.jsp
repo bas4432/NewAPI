@@ -7,22 +7,22 @@
 </head>
 <body>
 
-<c:set var="searchResultsDTO" value='${searchResultsDTO}'/>
+<%--<c:set var="searchResultsDTO" value='${searchResultsDTO}'/>--%>
 
-<div>${searchResultsDTO.lastBuildDate} 서치 타이틀</div>
-<div>Total: ${searchResultsDTO.total}</div>
+<%--<div>${searchResultsDTO.lastBuildDate} 서치 타이틀</div>--%>
+<%--<div>Total: ${searchResultsDTO.total}</div>--%>
 
-<ul>
-    <c:forEach var="searchItem" items="${searchResultsDTO.items}">
-        <li>Title: ${searchItem.title}</li>
-        <li>Link: ${searchItem.link}</li>
-        <li>Description: ${searchItem.description}</li>
-        <li>Blogger Name: ${searchItem.bloggerName}</li>
-        <li>Post Date: ${searchItem.postDate}</li>
-    </c:forEach>
-</ul>
+<%--<ul>--%>
+<%--    <c:forEach var="searchItem" items="${searchResultsDTO.items}">--%>
+<%--        <li>Title: ${searchItem.title}</li>--%>
+<%--        <li>Link: ${searchItem.link}</li>--%>
+<%--        <li>Description: ${searchItem.description}</li>--%>
+<%--        <li>Blogger Name: ${searchItem.bloggerName}</li>--%>
+<%--        <li>Post Date: ${searchItem.postDate}</li>--%>
+<%--    </c:forEach>--%>
+<%--</ul>--%>
 
-<button type="button" value="등록하기"><a href="/mypage/add">등록</a></button>
+<button type="button" value="등록하기"><a href="/mypage/keyword/add">등록</a></button>
 
 </body>
 </html>

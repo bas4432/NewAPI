@@ -1,5 +1,9 @@
 package com.example.newapi.search.service;
 
+import com.example.newapi.search.domain.SearchItemDTO;
+import com.example.newapi.search.domain.SearchResultDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,16 +14,33 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class SearchService {
+public class naverSearchService implements NewsSearchService {
 
     private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
-    public ResponseEntity<String> SearchApiCall(String Keyword){
+
+    @Override
+    public void SearchAPICall(String keyword) throws JsonProcessingException {
+
+        ResponseEntity<String> result = naverApiCall(keyword);
+        String jsonString = result.getBody();
+        SearchResultDto searchResultsDTO = objectMapper.readValue(jsonString, SearchResultDto.class);
+        List<SearchItemDTO> items = new ArrayList<>();
+
+        for(SearchItemDTO dto : searchResultsDTO.getItems()){
+
+        }
+    }
+
+    private ResponseEntity<String> naverApiCall(String Keyword){
 
         String clientId = "l82FRkPW5mJ4LoSsaWG0"; //애플리케이션 클라이언트 아이디
         String clientSecret = "1y6aDrkNm3";
@@ -37,7 +58,6 @@ public class SearchService {
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
-
 
         return ResponseEntity.ok(responseBody);
     }
